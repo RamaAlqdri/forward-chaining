@@ -276,7 +276,7 @@ const ResultKonsultasi = ({
                   <td className="text-base text-wrap text-center border-[0.2px] border-white/20  text-white/70 px-2 ">
                     {kecemasan.kecemasan.name}
                   </td>
-                  <td className="text-base text-wrap text-center  border-[0.2px] border-white/20 text-white/70 px-2 ">
+                  <td className="text-base text-wrap text-center  border-[0.2px] border-white/20 text-white/70 px-2 py-4 ">
                     <ProgressCircle
                       value={kecemasan.matchPercentage}
                       size="lg"
