@@ -4,7 +4,7 @@ import { Kecemasan } from "@/lib/models/ModelKecemasan";
 import { KecemasanMatch, Konsultasi } from "@/lib/models/ModelKonsultasi";
 import { serviceGejala } from "@/lib/services/ServiceGejala";
 import { serviceKecemasan } from "@/lib/services/ServiceKecemasan";
-import { Select, SelectItem } from "@tremor/react";
+import { ProgressCircle, Select, SelectItem } from "@tremor/react";
 import { randomUUID } from "crypto";
 import { set } from "firebase/database";
 import { nanoid } from "nanoid";
@@ -263,29 +263,39 @@ const ResultKonsultasi = ({
             </tr>
           </thead>
           <tbody className="">
-            {hasilKonsultasi.kecemasan.sort((a, b) => b.matchPercentage - a.matchPercentage).map((kecemasan, index) => (
-              <tr key={index} className=" border-y-[0.2px] border-white/20">
-                <td className="text-base text-wrap border-[0.2px] border-white/20 text-center text-white/70 px-2 ">
-                  {index + 1}
-                </td>
-                <td className="text-base text-wrap text-center border-[0.2px] border-white/20  text-white/70 px-2 ">
-                  {kecemasan.kecemasan.name}
-                </td>
-                <td className="text-base text-wrap text-center  border-[0.2px] border-white/20 text-white/70 px-2 ">
-                  {kecemasan.matchPercentage}
-                </td>
-                <td className="text-base text-wrap py-2 border-[0.2px] border-white/20 text-white/70 px-2 ">
-                  {kecemasan.kecemasan.solusi}
-                </td>
-              </tr>
-            ))}
+            {hasilKonsultasi.kecemasan
+              .sort((a, b) => b.matchPercentage - a.matchPercentage)
+              .map((kecemasan, index) => (
+                <tr key={index} className=" border-y-[0.2px] border-white/20">
+                  <td className="text-base text-wrap border-[0.2px] border-white/20 text-center text-white/70 px-2 ">
+                    {index + 1}
+                  </td>
+                  <td className="text-base text-wrap text-center border-[0.2px] border-white/20  text-white/70 px-2 ">
+                    {kecemasan.kecemasan.name}
+                  </td>
+                  <td className="text-base text-wrap text-center  border-[0.2px] border-white/20 text-white/70 px-2 ">
+                    <ProgressCircle
+                      value={kecemasan.matchPercentage}
+                      size="lg"
+                      color="teal"
+                    >
+                      <span className="flex h-[6rem] w-[6rem] items-center justify-center rounded-full bg-[#1FC2AD]/10 border-0 text-lg font-semibold text-[#1FC2AD]">
+                        {`${kecemasan.matchPercentage} %`}
+                      </span>
+                    </ProgressCircle>
+                  </td>
+                  <td className="text-base text-wrap py-2 border-[0.2px] border-white/20 text-white/70 px-2 ">
+                    {kecemasan.kecemasan.solusi}
+                  </td>
+                </tr>
+              ))}
           </tbody>
         </table>
       </div>
       <div className="flex items-center mt-4 justify-between">
         <div className="flex space-x-3">
           <button
-            onClick={()=>{
+            onClick={() => {
               setVisible(false);
               setShowKonsultasi(true);
             }}
