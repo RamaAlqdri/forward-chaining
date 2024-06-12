@@ -150,7 +150,7 @@ const DoKonsultasi = ({
           {/* head */}
           <thead className="w-full">
             <tr className="w-full h-10  ">
-              <th className="w-[3rem] text-white/80 text-base text-center ">
+              <th className="w-[4rem] text-white/80 text-base text-center border-r-[0.2px] border-white/20 ">
                 Pilih
               </th>
               <th className=" text-white/80 text-base text-center">Gejala</th>
@@ -159,7 +159,7 @@ const DoKonsultasi = ({
           <tbody className="">
             {dataGejala.map((gejala, index) => (
               <tr key={gejala.id} className=" border-y-[0.2px] border-white/20">
-                <td className="flex justify-center h-14 items-center   space-x-2 px-2">
+                <td className="flex justify-center h-14 items-center border-r-[0.2px] border-white/20   space-x-2 px-2">
                   <input
                     type="checkbox"
                     className="checkbox"

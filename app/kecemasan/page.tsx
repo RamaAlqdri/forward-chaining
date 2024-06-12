@@ -212,7 +212,7 @@ export default function Home() {
           </div>
         </div>
       </div>
-      <div className="absolute ">
+      <div className="fixed">
         <PopUpEdit
           visible={showSuntingPopUp}
           setVisible={setShowSuntingPopUp}
