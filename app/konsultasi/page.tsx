@@ -35,7 +35,7 @@ export default function Home() {
   const [showResultKonsultasi, setShowResultKonsultasi] = useState(false);
 
   return (
-    <div className="w-full flex justify-center mt-16">
+    <div className="w-full flex justify-center mt-8">
       <div className="w-full flex flex-col items-center mt-8">
         <p className="text-2xl text-white/80 font-semibold text-start mb-2">
           Konsultasi
@@ -107,8 +107,8 @@ const DoKonsultasi = ({
     userRules: Gejala[],
     kecemasanArray: Kecemasan[]
   ): Konsultasi => {
-    const kecemasanMatches: KecemasanMatch[] = kecemasanArray.map(
-      (kecemasan) => {
+    const kecemasanMatches: KecemasanMatch[] = kecemasanArray
+      .map((kecemasan) => {
         const matchCount = userRules.reduce((count, rule) => {
           return (
             count +
@@ -117,17 +117,20 @@ const DoKonsultasi = ({
         }, 0);
         const matchPercentage =
           kecemasan.rule.length > 0
-            ? (matchCount / kecemasan.rule.length) * 100
+            ? parseFloat(
+                ((matchCount / kecemasan.rule.length) * 100).toFixed(2)
+              ) // Format to two decimals and parse to float
             : 0;
         return {
           kecemasan,
           matchPercentage,
         };
-      }
-    );
+      })
+      .filter((match) => match.matchPercentage !== 0); // Filter out 0% matches
 
     return { kecemasan: kecemasanMatches };
   };
+
   const handleKonsultasi = () => {
     if (rule.length === 0) {
       alert("Pilih gejala terlebih dahulu");

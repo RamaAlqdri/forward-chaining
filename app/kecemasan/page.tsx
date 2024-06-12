@@ -74,7 +74,7 @@ export default function Home() {
   };
 
   return (
-    <div className="w-full flex justify-center mt-16">
+    <div className="w-full flex justify-center mt-8">
       <div className="w-full flex flex-col items-center mt-8">
         <p className="text-2xl text-white/80 font-semibold text-start mb-2">
           Data Kecemasan
@@ -107,13 +107,13 @@ export default function Home() {
                       key={kecemasan.id}
                       className="  border-y-[0.2px] border-white/20"
                     >
-                      <td className="text-base text-wrap align-top  text-white/70 px-2">
+                      <td className="text-base text-wrap align-top py-2 text-white/70 px-2">
                         {kecemasan.name}
                       </td>
-                      <td className="text-base text-ellipsis align-top overflow-hidden text-white/70 px-2 border-l-[0.2px] border-white/20">
+                      <td className="text-base text-ellipsis align-top py-2 overflow-hidden text-white/70 px-2 border-l-[0.2px] border-white/20">
                         {kecemasan.keterangan}
                       </td>
-                      <td className="text-base text-ellipsis align-top overflow-hidden text-white/70 px-2 border-x-[0.2px] border-white/20">
+                      <td className="text-base text-ellipsis align-top py-2 overflow-hidden text-white/70 px-2 border-x-[0.2px] border-white/20">
                         {kecemasan.solusi}
                       </td>
                       <td className="h-14 flex justify-center  items-center   space-x-2 px-2">

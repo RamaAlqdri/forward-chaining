@@ -8,7 +8,6 @@ import Image from "next/image";
 import { useEffect, useState } from "react";
 import { SubmitHandler, useForm } from "react-hook-form";
 
-
 export default function Home() {
   const [dataGejala, setDataGejala] = useState<Gejala[]>([]);
   useEffect(() => {
@@ -59,7 +58,7 @@ export default function Home() {
   };
 
   return (
-    <div className="w-full flex justify-center mt-16">
+    <div className="w-full flex justify-center mt-8">
       <div className="w-full flex flex-col items-center mt-8">
         <p className="text-2xl text-white/80 font-semibold text-start mb-2">
           Data Gejala
@@ -84,7 +83,7 @@ export default function Home() {
                     key={gejala.id}
                     className=" border-y-[0.2px] border-white/20"
                   >
-                    <td className="text-base text-wrap  text-white/70 px-2 border-r-[0.2px] py-1 border-white/20">
+                    <td className="text-base text-wrap  text-white/70 px-2 border-r-[0.2px] py-2 border-white/20">
                       {gejala.name}
                     </td>
                     <td className="flex justify-center h-14 items-center   space-x-2 px-2">
@@ -285,8 +284,8 @@ const PopUpEdit = ({ visible, setVisible, gejala }: PopUpEditProps) => {
   useEffect(() => {
     setValue("name", gejala.name);
     // console.log("hey");
-  // eslint-disable-next-line react-hooks/exhaustive-deps
-  },[gejala]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [gejala]);
 
   const formSubmit: SubmitHandler<Inputs> = async (form) => {
     const { name } = form;
