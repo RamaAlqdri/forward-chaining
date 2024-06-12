@@ -2,7 +2,6 @@ import { cache } from "react";
 import {
   collection,
   getDocs,
-  doc,
   updateDoc,
   setDoc,
   query,
@@ -11,6 +10,7 @@ import {
   addDoc,
   getDoc,
   deleteDoc,
+  doc,
 } from "firebase/firestore";
 import { set } from "firebase/database";
 import { get } from "http";
@@ -33,30 +33,30 @@ async function createKonsultasi(konsultasi: Konsultasi) {
   }
 }
 
-async function updateKonsultasi(konsultasi: Konsultasi) {
-  try {
-    // Dapatkan referensi dokumen
-    const konsultasiRef = doc(db, "konsultasi", konsultasi.id);
+// async function updateKonsultasi(konsultasi: Konsultasi) {
+//   try {
+//     // Dapatkan referensi dokumen
+//     const konsultasiRef = doc(db, "konsultasi", konsultasi.id);
 
-    // Cek dulu apakah dokumen dengan ID tersebut ada
-    const docSnap = await getDoc(konsultasiRef);
+//     // Cek dulu apakah dokumen dengan ID tersebut ada
+//     const docSnap = await getDoc(konsultasiRef);
 
-    if (docSnap.exists()) {
-      // Jika dokumen ada, lakukan update
-      await updateDoc(konsultasiRef, {
-        id: konsultasi.id,
-        namaPasien: konsultasi.namaPasien,
-        kecemasan: konsultasi.kecemasan,
-      });
-      console.log("Konsultasi updated successfully.");
-    } else {
-      // Jika tidak ada, bisa throw error atau handle sesuai kebutuhan
-      console.error("Konsultasi not found with id:", konsultasi.id);
-    }
-  } catch (error) {
-    console.error("Error updating konsultasi:", error);
-  }
-}
+//     if (docSnap.exists()) {
+//       // Jika dokumen ada, lakukan update
+//       await updateDoc(konsultasiRef, {
+//         id: konsultasi.id,
+//         namaPasien: konsultasi.namaPasien,
+//         kecemasan: konsultasi.kecemasan,
+//       });
+//       console.log("Konsultasi updated successfully.");
+//     } else {
+//       // Jika tidak ada, bisa throw error atau handle sesuai kebutuhan
+//       console.error("Konsultasi not found with id:", konsultasi.id);
+//     }
+//   } catch (error) {
+//     console.error("Error updating konsultasi:", error);
+//   }
+// }
 
 async function deleteKonsultasi(konsultasiId: string) {
   try {
@@ -124,7 +124,7 @@ async function getKonsultasi(konsultasiId: string): Promise<Konsultasi | null> {
 
 export const serviceKonsultasi = {
   createKonsultasi,
-  updateKonsultasi,
+  // updateKonsultasi,
   deleteKonsultasi,
   getKonsultasi,
   getKonsultasiList,

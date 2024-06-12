@@ -40,7 +40,7 @@ export default function Home() {
         <p className="text-2xl text-white/80 font-semibold text-start mb-2">
           Konsultasi
         </p>
-        <Konsultasi
+        <DoKonsultasi
           rule={rule}
           setRule={setRule}
           visible={showKonsultasi}
@@ -74,7 +74,7 @@ interface KonsultasiProps {
   setRule: (rule: Gejala[]) => void;
   setHasilKonsultasi: (hasilKonsultasi: Konsultasi) => void;
 }
-const Konsultasi = ({
+const DoKonsultasi = ({
   visible,
   setVisible,
   dataGejala,
