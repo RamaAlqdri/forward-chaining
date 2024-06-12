@@ -85,6 +85,9 @@ export default function Home() {
               {/* head */}
               <thead className="w-full">
                 <tr className="w-full h-10  ">
+                  <th className="w-[2rem] text-white/80 text-base text-center border-r-[0.2px] border-white/20">
+                    No
+                  </th>
                   <th className="w-2/12 text-white/80 text-base text-center">
                     Gejala
                   </th>
@@ -107,7 +110,10 @@ export default function Home() {
                       key={kecemasan.id}
                       className="  border-y-[0.2px] border-white/20"
                     >
-                      <td className="text-base text-wrap align-top py-2 text-white/70 px-2">
+                      <td className="text-base text-wrap text-center align-top py-2 text-white/70 px-2">
+                        {index + 1 + startIndex}
+                      </td>
+                      <td className="text-base text-wrap align-top py-2 text-white/70 px-2 border-l-[0.2px] border-white/20">
                         {kecemasan.name}
                       </td>
                       <td className="text-base text-ellipsis align-top py-2 overflow-hidden text-white/70 px-2 border-l-[0.2px] border-white/20">
@@ -186,13 +192,13 @@ export default function Home() {
                 onClick={handlePrevious}
                 className="btn bg-[#212529] border-none text-white/70 rounded-xl  text-xm px-3 w-fit"
               >
-                Previous
+                Sebelumnya
               </button>
               <button
                 onClick={handleNext}
                 className="btn bg-[#212529] border-none text-white/70 rounded-xl  text-xm px-3 w-fit"
               >
-                Next
+                Selanjutnya
               </button>
             </div>
             <div className="flex space-x-3">
@@ -471,7 +477,6 @@ const PopUpEdit = ({
     },
   });
 
-  
   useEffect(() => {
     setRule(kecemasan.rule);
     setValue("name", kecemasan.name);
@@ -597,7 +602,7 @@ const PopUpDelete = ({ visible, setVisible, kecemasan }: PopUpDeleteProps) => {
     } finally {
       window.location.reload();
     }
-  }
+  };
   //   console.log(namaGejala);
   if (visible) {
     return (
@@ -612,9 +617,10 @@ const PopUpDelete = ({ visible, setVisible, kecemasan }: PopUpDeleteProps) => {
             {`Apakah anda yakin ingin menghapus kecemasan "${kecemasan.name}"`}
           </p>
           <div className="space-x-2 ">
-            <button 
-            onClick={handleDelete}
-            className="py-2 bg-[#FD413C]/10 border-none hover:bg-black/40 text-[#FD413C] rounded-xl font-medium  text-sm px-4">
+            <button
+              onClick={handleDelete}
+              className="py-2 bg-[#FD413C]/10 border-none hover:bg-black/40 text-[#FD413C] rounded-xl font-medium  text-sm px-4"
+            >
               Hapus
             </button>
             <button

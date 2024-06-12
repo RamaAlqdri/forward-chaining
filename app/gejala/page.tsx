@@ -69,6 +69,9 @@ export default function Home() {
               {/* head */}
               <thead className="w-full">
                 <tr className="w-full h-10  ">
+                  <th className="w-[3rem] text-white/80 text-base text-center border-r-[0.2px] border-white/20">
+                    No
+                  </th>
                   <th className=" text-white/80 text-base text-center">
                     Gejala
                   </th>
@@ -83,6 +86,9 @@ export default function Home() {
                     key={gejala.id}
                     className=" border-y-[0.2px] border-white/20"
                   >
+                    <td className="text-base text-wrap text-center  text-white/70 px-2 border-r-[0.2px] py-2 border-white/20">
+                      {index+1+startIndex}
+                    </td>
                     <td className="text-base text-wrap  text-white/70 px-2 border-r-[0.2px] py-2 border-white/20">
                       {gejala.name}
                     </td>
@@ -139,13 +145,13 @@ export default function Home() {
                 onClick={handlePrevious}
                 className="btn bg-[#212529] border-none text-white/70 rounded-xl  text-xm px-3 w-fit"
               >
-                Previous
+                Sebelumnya
               </button>
               <button
                 onClick={handleNext}
                 className="btn bg-[#212529] border-none text-white/70 rounded-xl  text-xm px-3 w-fit"
               >
-                Next
+                Selanjutnya
               </button>
             </div>
             <div className="flex space-x-3">
